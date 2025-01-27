@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       backgroundImage = prefs.getString('backgroundImage') ?? 'assets/circuitos.jpg';
     });
- }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,31 +39,22 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: Alignment.bottomCenter,
             child: Column(
               children: [
-                Card(
-                elevation: 4,
-                margin: EdgeInsets.all(16),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Nombre: Mónica Sofía Restrepo León',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Text(
-                        'Correo: morestrepol@unal.edu.co',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Text(
-                        'Edad: 22 años',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
+              const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/info',
+                      arguments: {
+                        'name': 'Mónica Sofía Restrepo León',
+                        'email': 'morestrepol@unal.edu.co',
+                        'age': '22 años',
+                      },
+                    );
+                  },
+                  child: Text('Ver información de estudiante'),
                 ),
-              ),
-              const Spacer(),
+                Spacer(),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/settings').then((_) {

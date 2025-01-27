@@ -39,11 +39,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text('Configuración'),
       ),
       body: Container(
-        // Gradient background
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft,
             colors: [Colors.deepPurple.withValues(alpha:0.3), Colors.white], 
           ),
         ),

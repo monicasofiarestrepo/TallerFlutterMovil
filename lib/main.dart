@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'settings_screen.dart';
+import 'info_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,48 +18,13 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        '/info': (context) => InfoScreen(),
+        '/info': (context) => InfoScreen(
+              name: (ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>)['name'] ?? '',
+              email: (ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>)['email'] ?? '',
+              age: (ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>)['age'] ?? '',
+            ),
         '/settings': (context) => SettingsScreen(),
       },
-    );
-  }
-}
-
-class InfoScreen extends StatelessWidget {
-  const InfoScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Información Personal de la estudiante'),
-      ),
-      body: Center(
-        child: Card(
-          elevation: 4,
-          margin: EdgeInsets.all(16),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Nombre: Mónica Sofía Restrepo León',
-                  style: TextStyle(fontSize: 18),
-                ),
-                Text(
-                  'Correo: morestrepol@unal.edu.co',
-                  style: TextStyle(fontSize: 18),
-                ),
-                Text(
-                  'Edad: 22 años',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
